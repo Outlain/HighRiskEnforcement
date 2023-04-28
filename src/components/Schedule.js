@@ -71,10 +71,10 @@ export function Schedule() {
         <section className="Main">
             {schedule && scheduleArray ? (
                 scheduleArray.map((item, index) => (
-                    <div key={index} >
+                    <div key={index}  className='container_area'>
                         <h1>{item.toUpperCase()}</h1>
                         {schedule[item].map((item, index) => (
-                            <div key={index}>
+                            <div key={index} className='container_inner'>
                                 <h4>{item.name}</h4>
                                 <h6>
                                     {item.random.value

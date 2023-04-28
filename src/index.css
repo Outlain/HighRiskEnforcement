@@ -18,11 +18,44 @@ code {
   justify-content: center;
 }
 
-.hours {
-  padding: 10px;
+.Main {
+  /* background-color: red; */
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container_area {
+  width: 95%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   background-color: black;
   color: white;
+  padding: 1.2rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.container_inner {
+  width: 90%;
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
+}
+.hours {
+  padding: 10px;
+  margin: 10px;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
