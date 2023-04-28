@@ -94,7 +94,8 @@ export function Schedule() {
                                                         <span className='g'>{hours[0].G}</span>
                                                     </>
                                                 ) : (
-                                                    'two'
+                                                    <span className='empty'></span>
+
                                                 )}
                                             </div>
                                         </div>
