@@ -71,7 +71,7 @@ export function Schedule() {
         <section className="Main">
             {schedule && scheduleArray ? (
                 scheduleArray.map((item, index) => (
-                    <div key={index}>
+                    <div key={index} >
                         <h1>{item.toUpperCase()}</h1>
                         {schedule[item].map((item, index) => (
                             <div key={index}>
@@ -82,8 +82,13 @@ export function Schedule() {
                                         : 'Set Schedule'}
                                 </h6>
                                 <div className='times'>
-                                    {item.schedule.map((itemEnd, indexEnd) =>
-                                        <div className='hours'>{indexEnd >= 12 ? `${indexEnd % 12 || 12}PM` : `${indexEnd || 12}AM`} </div>
+                                    {item.schedule.map((hours, indexEnd) =>
+                                        <div key={indexEnd} className="hour">
+                                            <div className="hour-label">
+                                                {indexEnd >= 12 ? `${indexEnd % 12 || 12}PM` : `${indexEnd || 12}AM`}
+                                            </div>
+                                            <div className="hour-value">{hours.length > 0 ? 'one' : 'two'}</div>
+                                        </div>
                                     )}
                                 </div>
                             </div>
