@@ -78,10 +78,8 @@ export function Schedule() {
         <section className="Main">
             <div className='nav_outer'>
                 <div className='nav'>
-
-                    <label htmlFor="day-select">Select a day:</label>
                     <select id="day-select" value={selectedDay} onChange={handleSelectChange}>
-                        <option value="">Select a day</option>
+                        <option value="">Overview</option>
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
                         <option value="Wednesday">Wednesday</option>
@@ -90,7 +88,6 @@ export function Schedule() {
                         <option value="Saturday">Saturday</option>
                         <option value="Sunday">Sunday</option>
                     </select>
-                    <p>You selected: {selectedDay}</p>
                 </div>
             </div>
             <div className='main_container_area'>
