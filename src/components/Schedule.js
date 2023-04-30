@@ -118,7 +118,7 @@ export function Schedule() {
 
                                                         <div className="hour-value">
                                                             {console.log(hours[0][selectedDay])}
-                                                            {hours[0][selectedDay].D !== 0 && hours[0][selectedDay].G !== 0 ? (
+                                                            {hours[0][selectedDay].D === 1 || hours[0][selectedDay].G === 1 ? (
                                                                 <>
                                                                     <span className='d'>{hours[0][selectedDay].D}</span>
                                                                     <span className='g'>{hours[0][selectedDay].G}</span>
