@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 export function Schedule() {
     const [schedule, setSchedule] = useState(null);
     const [scheduleArray, setScheduleArray] = useState(null);
+    const [selectedDay, setSelectedDay] = useState('');
 
     useEffect(() => {
 
@@ -67,47 +68,80 @@ export function Schedule() {
     //         )}
     //     </section>
     // );
+
+    const handleSelectChange = (event) => {
+        setSelectedDay(event.target.value);
+    };
+
+
     return (
         <section className="Main">
-            {schedule && scheduleArray ? (
-                scheduleArray.map((item, index) => (
-                    <div key={index} className='container_area'>
-                        <h1>{item.toUpperCase()}</h1>
-                        {schedule[item].map((item, index) => (
-                            <div key={index} className='container_inner'>
-                                <h4>{item.name}</h4>
-                                <h6>
-                                    {item.random.value
-                                        ? 'The Schedule is random put down a set numer of hours per location'
-                                        : 'Set Schedule'}
-                                </h6>
-                                <div className='times'>
-                                    {item.schedule.map((hours, indexEnd) =>
-                                        <div key={indexEnd} className="hour">
-                                            <div className="hour-label">
-                                                {indexEnd >= 12 ? `${indexEnd % 12 || 12}PM` : `${indexEnd || 12}AM`}
-                                            </div>
-                                            <div className="hour-value">
-                                                {hours.length > 0 ? (
-                                                    <>
-                                                        <span className='d'>{hours[0].D}</span>
-                                                        <span className='g'>{hours[0].G}</span>
-                                                    </>
-                                                ) : (
-                                                    <span className='empty'></span>
+            <div className='nav_outer'>
+                <div className='nav'>
 
+                    <label htmlFor="day-select">Select a day:</label>
+                    <select id="day-select" value={selectedDay} onChange={handleSelectChange}>
+                        <option value="">Select a day</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                    <p>You selected: {selectedDay}</p>
+                </div>
+            </div>
+            <div className='main_container_area'>
+                {schedule && scheduleArray ? (
+                    scheduleArray.map((item, index) => (
+                        <div key={index} className='container_area'>
+                            <h1>{item.toUpperCase()}</h1>
+                            {schedule[item].map((item, index) => (
+                                <div key={index} className='container_inner'>
+                                    <h4>{item.name}</h4>
+                                    {selectedDay === '' ? '' :
+                                        <div>
+                                            <h6>
+                                                {item.random.value
+                                                    ? 'The Schedule is random put down a set numer of hours per location'
+                                                    : 'Set Schedule'}
+                                            </h6>
+
+                                            <div className='times'>
+                                                {item.schedule.map((hours, indexEnd) =>
+                                                    <div key={indexEnd} className="hour">
+                                                        <div className="hour-label">
+                                                            {indexEnd >= 12 ? `${indexEnd % 12 || 12}PM` : `${indexEnd || 12}AM`}
+                                                        </div>
+
+                                                        <div className="hour-value">
+                                                            {console.log(hours[0][selectedDay])}
+                                                            {hours[0][selectedDay].D !== 0 && hours[0][selectedDay].G !== 0 ? (
+                                                                <>
+                                                                    <span className='d'>{hours[0][selectedDay].D}</span>
+                                                                    <span className='g'>{hours[0][selectedDay].G}</span>
+                                                                </>
+                                                            ) : (
+                                                                <span className='empty'></span>
+
+                                                            )}
+                                                        </div>
+                                                    </div>
                                                 )}
                                             </div>
                                         </div>
-                                    )}
+                                    }
+
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                ))
-            ) : (
-                'loading'
-            )}
+                            ))}
+                        </div>
+                    ))
+                ) : (
+                    'loading'
+                )}
+            </div>
         </section>
     );
 
