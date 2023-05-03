@@ -117,8 +117,14 @@ export function Schedule() {
                                                             {console.log(hours[0][selectedDay])}
                                                             {hours[0][selectedDay].D >= 1 || hours[0][selectedDay].G >= 1 ? (
                                                                 <>
-                                                                    <span className='d'>{hours[0][selectedDay].D}</span>
-                                                                    <span className='g'>{hours[0][selectedDay].G}</span>
+                                                                    {hours[0][selectedDay].D > 1 ?
+                                                                        <span className='d_plural'>{hours[0][selectedDay].D}</span> :
+                                                                        <span className='d'>{hours[0][selectedDay].D}</span>
+                                                                    }
+                                                                    {hours[0][selectedDay].G > 1 ?
+                                                                        <span className='g_plural'>{hours[0][selectedDay].G}</span> :
+                                                                        <span className='g'>{hours[0][selectedDay].G}</span>
+                                                                    }
                                                                 </>
                                                             ) : (
                                                                 <span className='empty'></span>
